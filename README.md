@@ -68,13 +68,19 @@ All results are checkpointed to disk. Sessions can be interrupted and resumed at
 
 ### Execution Time
 
+### Execution Time
+
 | Section | Description | Time (L4 GPU) |
 |---------|------------|---------------|
-| 0–2 | Setup + architecture + ablation mechanism | ~10 min |
-| 3 | Experiment 1 (full ablation study) | 4–8 hrs |
-| 3G-extra | Random controls + Transformer baseline | ~10 min |
-| 4 | Experiment 2 (hidden-state metrics) | ~20 min |
+| 0–2 | Setup + architecture + ablation mechanism | ~15 min (includes model downloads) |
+| 3 | Experiment 1 — Qwen ablations | ~3 hrs (Colab L4) |
+| 3 | Experiment 1 — Falcon ablations | ~6 hrs (RunPod A100 SXM) |
+| 3G | Perplexity under group ablation | ~15 min |
+| 3G-extra | Random controls + Transformer baseline | ~15 min |
+| 4 | Experiment 2 (hidden-state metrics) | ~30 min |
 | 5–7 | Analysis + tables + figures | ~5 min |
+
+**Note on Falcon compute**: Falcon-H1 requires `mamba-ssm` CUDA kernels, which do not compile on Colab's default CUDA 12.8 / PyTorch 2.5+ environment. Falcon experiments were run on a RunPod A100 SXM 80GB spot instance ($0.95/hr) with PyTorch 2.4.0 / CUDA 12.1. Total compute cost for all experiments: approximately $10–15.
 
 ## Ablation Methodology
 
