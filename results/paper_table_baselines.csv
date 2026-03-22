@@ -1,0 +1,11 @@
+model_key,condition,benchmark,metric_name,score,n
+qwen3.5-0.8b,baseline,mmlu,accuracy,0.489,2000
+qwen3.5-0.8b,baseline,gsm8k,exact_match,0.35,100
+qwen3.5-0.8b,baseline,arc_challenge,accuracy,0.7424749163879598,299
+qwen3.5-0.8b,baseline,hellaswag,accuracy,0.516,2000
+qwen3.5-0.8b,baseline,truthfulqa_mc,accuracy,0.2848101265822785,790
+falcon-h1-0.5b,baseline,mmlu,accuracy,0.568,2000
+falcon-h1-0.5b,baseline,gsm8k,exact_match,0.4,100
+falcon-h1-0.5b,baseline,arc_challenge,accuracy,0.7357859531772575,299
+falcon-h1-0.5b,baseline,hellaswag,accuracy,0.512,2000
+falcon-h1-0.5b,baseline,truthfulqa_mc,accuracy,0.22278481012658227,790

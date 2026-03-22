@@ -1,0 +1,7 @@
+model_key,condition,loss,perplexity
+qwen3.5-0.8b,baseline,2.03125,7.623609917712736
+qwen3.5-0.8b,all_linear_off,12.5,268337.2865208745
+qwen3.5-0.8b,all_attention_off,6.4375,624.8427387029609
+falcon-h1-0.5b,baseline,1.7265625,5.621297448593752
+falcon-h1-0.5b,all_ssm_off,5.6875,295.1548104863723
+falcon-h1-0.5b,all_attention_off,2.875,17.725424121461643

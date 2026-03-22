@@ -1,0 +1,100 @@
+# Functional Component Ablation in Hybrid Language Models
+
+> **Paper**: *Functional Component Ablation Reveals Specialization Patterns in Hybrid Language Model Architectures*
+> 
+> Hector Borobia, Elies Seguí-Mas, Guillermina Tormo-Carbó — Universitat Politècnica de València
+
+## Key Findings
+
+1. **Neither component is bypassed** — Both attention and alternative components (SSM/linear attention) are essential in natively trained hybrid models
+2. **The alternative component is the backbone** — Removing linear attention (Qwen) causes 35,200× perplexity degradation vs. 82× for attention; removing SSM (Falcon) causes 53× vs. 3.2×
+3. **Positional importance gradient** — Early layers are 2–5× more critical than late layers for both component types
+4. **Hybrid resilience** — Hybrid models are 20–119× more resilient to random layer removal than pure Transformers of comparable size
+
+## Models Studied
+
+| Model | Architecture | Parameters | Layers | Type |
+|-------|-------------|-----------|--------|------|
+| [Qwen3.5-0.8B-Base](https://huggingface.co/Qwen/Qwen3.5-0.8B-Base) | Sequential hybrid | 752M | 24 | 18 linear + 6 attention |
+| [Falcon-H1-0.5B-Base](https://huggingface.co/tiiuae/Falcon-H1-0.5B-Base) | Parallel hybrid | 521M | 36 | SSM + attention per block |
+| [Qwen2.5-0.5B](https://huggingface.co/Qwen/Qwen2.5-0.5B) | Pure Transformer | 490M | 24 | Control baseline |
+
+## Repository Structure
+
+```
+├── notebooks/
+│   └── hybrid_component_ablation.ipynb   # Complete experimental pipeline
+├── results/                               # All CSV result files
+│   ├── experiment1_summary.csv            # Exp 1: all ablation conditions
+│   ├── experiment1_pivot.csv              # Exp 1: benchmark × condition pivot
+│   ├── perplexity_under_ablation.csv      # WikiText-2 perplexity
+│   ├── random_control_perplexity.csv      # Random control perplexity (hybrid)
+│   ├── transformer_baseline_perplexity.csv # Transformer baseline perplexity
+│   ├── experiment3_task_dependent_analysis.csv
+│   ├── *_experiment2_metrics.csv          # Hidden-state metrics per model
+│   ├── *_architecture_summary.csv         # Architecture details per model
+│   └── ...
+├── figures/                               # All generated figures (PNG + PDF)
+│   ├── paper_radar_group_ablation.png
+│   ├── paper_dual_layer_sweep_heatmap.png
+│   ├── paper_component_dominance_by_layer.png
+│   ├── paper_exp1_exp2_correlation.png
+│   ├── perplexity_under_ablation_bar.png
+│   └── ...
+├── tables/                                # LaTeX tables (.tex)
+│   ├── paper_table1_group_ablation_delta.tex
+│   ├── perplexity_under_ablation.tex
+│   └── ...
+└── README.md
+```
+
+## Reproducing the Experiments
+
+### Requirements
+
+- Google Colab Pro (L4 GPU recommended, 16 GB VRAM)
+- Python 3.10+
+- PyTorch 2.1+ with CUDA
+- For Falcon: `mamba-ssm` and `causal-conv1d` (optional; without them, a 1024-token cap is applied)
+
+### Quick Start
+
+1. Open `notebooks/hybrid_component_ablation.ipynb` in Google Colab
+2. Run Section 0 (setup + config)
+3. Run Section 1 (architecture discovery)
+4. Run Sections 2–7 sequentially
+
+All results are checkpointed to disk. Sessions can be interrupted and resumed at any point.
+
+### Execution Time
+
+| Section | Description | Time (L4 GPU) |
+|---------|------------|---------------|
+| 0–2 | Setup + architecture + ablation mechanism | ~10 min |
+| 3 | Experiment 1 (full ablation study) | 4–8 hrs |
+| 3G-extra | Random controls + Transformer baseline | ~10 min |
+| 4 | Experiment 2 (hidden-state metrics) | ~20 min |
+| 5–7 | Analysis + tables + figures | ~5 min |
+
+## Ablation Methodology
+
+- **Sequential skip (Qwen)**: Layer output replaced with input (identity within residual stream)
+- **Parallel zeroing (Falcon)**: Targeted component output zeroed via forward hooks
+- **Random controls**: Same number of randomly selected layers removed (5 trials, bootstrap CIs)
+- **Transformer baseline**: Random layer removal on Qwen2.5-0.5B for cross-architecture comparison
+
+## Citation
+
+```bibtex
+@article{borobia2026hybrid,
+  title={Functional Component Ablation Reveals Specialization Patterns 
+         in Hybrid Language Model Architectures},
+  author={Borobia, Hector and Segu{\'i}-Mas, Elies and Tormo-Carb{\'o}, Guillermina},
+  journal={arXiv preprint},
+  year={2026}
+}
+```
+
+## License
+
+MIT

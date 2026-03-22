@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-03-22 13:40:27 UTC",
+  "python": "3.12.12 (main, Oct 10 2025, 08:52:57) [GCC 11.4.0]",
+  "platform": "Linux-6.6.113+-x86_64-with-glibc2.35",
+  "pytorch": "2.10.0+cu128",
+  "transformers": "5.3.0.dev0",
+  "datasets": "4.8.3",
+  "accelerate": "1.13.0",
+  "numpy": "2.4.3",
+  "pandas": "3.0.1",
+  "matplotlib": "3.10.8",
+  "seaborn": "0.13.2",
+  "lm_eval": null,
+  "gpu": {
+    "cuda_available": true,
+    "device_count": 1,
+    "device_name": "NVIDIA L4",
+    "total_memory_gb": 22.03,
+    "capability": "8.9",
+    "bf16_supported": true
+  },
+  "config": {
+    "BASE_DIR": "/content/drive/MyDrive/papers-tecnicos/2-LinealComponents",
+    "CHECKPOINTS_DIR": "/content/drive/MyDrive/papers-tecnicos/2-LinealComponents/checkpoints",
+    "RESULTS_DIR": "/content/drive/MyDrive/papers-tecnicos/2-LinealComponents/results",
+    "FIGURES_DIR": "/content/drive/MyDrive/papers-tecnicos/2-LinealComponents/figures",
+    "TABLES_DIR": "/content/drive/MyDrive/papers-tecnicos/2-LinealComponents/tables",
+    "LOGS_DIR": "/content/drive/MyDrive/papers-tecnicos/2-LinealComponents/logs",
+    "ARTIFACTS_DIR": "/content/drive/MyDrive/papers-tecnicos/2-LinealComponents/artifacts",
+    "SEED": 42,
+    "DEVICE": "cuda",
+    "DTYPE": "torch.bfloat16",
+    "QUICK_EVAL": true,
+    "PAPER_MODE": true,
+    "MODELS_TO_RUN": [
+      "qwen3.5-0.8b",
+      "falcon-h1-0.5b"
+    ],
+    "MAX_EVAL_SAMPLES": null,
+    "MAX_LAYER_ABLATION_SAMPLES": 50,
+    "MAX_PROGRESSIVE_ABLATION_SAMPLES": 40,
+    "MAX_GSM8K_SAMPLES": null,
+    "DIAGNOSTIC_NUM_TOKENS": 512,
+    "USE_BASE_MODELS": true,
+    "RUN_OPTIONAL_CONTEXT_STRESS": true,
+    "MAMBA_KERNELS_AVAILABLE": false
+  }
+}

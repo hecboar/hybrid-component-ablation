@@ -1,0 +1,141 @@
+Paper-ready findings summary
+
+================================================================================
+
+{
+  "model_key": "falcon-h1-0.5b",
+  "largest_score_drops": [
+    {
+      "benchmark": "arc_challenge",
+      "condition": "all_ssm_off",
+      "score_drop": 0.5250836120401338
+    },
+    {
+      "benchmark": "arc_challenge",
+      "condition": "all_attention_off",
+      "score_drop": 0.5217391304347826
+    },
+    {
+      "benchmark": "gsm8k",
+      "condition": "all_attention_off",
+      "score_drop": 0.4
+    }
+  ],
+  "smallest_score_drops": [
+    {
+      "benchmark": "truthfulqa_mc",
+      "condition": "all_ssm_off",
+      "score_drop": -0.04050632911392407
+    },
+    {
+      "benchmark": "truthfulqa_mc",
+      "condition": "all_attention_off",
+      "score_drop": -0.0037974683544303722
+    },
+    {
+      "benchmark": "hellaswag",
+      "condition": "all_attention_off",
+      "score_drop": 0.14300000000000002
+    }
+  ]
+}
+
+{
+  "model_key": "qwen3.5-0.8b",
+  "largest_score_drops": [
+    {
+      "benchmark": "arc_challenge",
+      "condition": "all_attention_off",
+      "score_drop": 0.5150501672240803
+    },
+    {
+      "benchmark": "arc_challenge",
+      "condition": "all_linear_off",
+      "score_drop": 0.4816053511705685
+    },
+    {
+      "benchmark": "gsm8k",
+      "condition": "all_attention_off",
+      "score_drop": 0.35
+    }
+  ],
+  "smallest_score_drops": [
+    {
+      "benchmark": "truthfulqa_mc",
+      "condition": "all_attention_off",
+      "score_drop": 0.01772151898734181
+    },
+    {
+      "benchmark": "truthfulqa_mc",
+      "condition": "all_linear_off",
+      "score_drop": 0.054430379746835456
+    },
+    {
+      "benchmark": "hellaswag",
+      "condition": "all_attention_off",
+      "score_drop": 0.1755
+    }
+  ]
+}
+
+{
+  "model_key": "qwen3.5-0.8b",
+  "top_logit_lens_kl_layers": [
+    {
+      "layer_idx": 23,
+      "component_type": "attention",
+      "logit_lens_kl": 0.03662109375
+    },
+    {
+      "layer_idx": 22,
+      "component_type": "linear",
+      "logit_lens_kl": 0.0042724609375
+    },
+    {
+      "layer_idx": 0,
+      "component_type": "linear",
+      "logit_lens_kl": 0.0032501220703125
+    },
+    {
+      "layer_idx": 1,
+      "component_type": "linear",
+      "logit_lens_kl": 0.00213623046875
+    },
+    {
+      "layer_idx": 21,
+      "component_type": "linear",
+      "logit_lens_kl": 0.00194549560546875
+    }
+  ]
+}
+
+{
+  "model_key": "falcon-h1-0.5b",
+  "top_logit_lens_kl_layers": [
+    {
+      "layer_idx": 30,
+      "component_type": "ssm",
+      "logit_lens_kl": 32.0
+    },
+    {
+      "layer_idx": 33,
+      "component_type": "ssm",
+      "logit_lens_kl": 11.125
+    },
+    {
+      "layer_idx": 1,
+      "component_type": "ssm",
+      "logit_lens_kl": 2.859375
+    },
+    {
+      "layer_idx": 0,
+      "component_type": "attention",
+      "logit_lens_kl": 0.7109375
+    },
+    {
+      "layer_idx": 0,
+      "component_type": "ssm",
+      "logit_lens_kl": 0.69921875
+    }
+  ]
+}

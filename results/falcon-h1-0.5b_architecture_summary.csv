@@ -1,0 +1,2 @@
+model_key,model_id,display_name,arch_family,num_parameters,context_length,num_layers
+falcon-h1-0.5b,tiiuae/Falcon-H1-0.5B-Base,Falcon-H1-0.5B,falcon_parallel_hybrid,521411104,16384,36

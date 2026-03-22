@@ -1,0 +1,11 @@
+model_key,condition,loss,perplexity,layers_removed
+qwen3.5-0.8b,random_control_linear_trial0,13.44599437713623,691068.625,18
+qwen3.5-0.8b,random_control_linear_trial1,14.825263977050781,2744924.0,18
+qwen3.5-0.8b,random_control_linear_trial2,14.30605411529541,1633203.75,18
+qwen3.5-0.8b,random_control_linear_trial3,14.003632545471191,1206980.75,18
+qwen3.5-0.8b,random_control_linear_trial4,14.71908950805664,2468421.75,18
+qwen3.5-0.8b,random_control_attention_trial0,12.22768783569336,204370.09375,6
+qwen3.5-0.8b,random_control_attention_trial1,4.147914886474609,63.30187225341797,6
+qwen3.5-0.8b,random_control_attention_trial2,3.5463078022003174,34.68501663208008,6
+qwen3.5-0.8b,random_control_attention_trial3,7.070688247680664,1176.957763671875,6
+qwen3.5-0.8b,random_control_attention_trial4,4.841556072235107,126.66629791259766,6

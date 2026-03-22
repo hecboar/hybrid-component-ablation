@@ -1,0 +1,26 @@
+\begin{tabular}{lllrrrrrrrr}
+\toprule
+model_key & benchmark & condition & baseline_score & ablated_score & score_drop & paired_n & bootstrap_mean_drop & bootstrap_ci_low & bootstrap_ci_high & ci_excludes_zero \\
+\midrule
+qwen3.5-0.8b & mmlu & all_linear_off & 0.4890 & 0.2500 & 0.2390 & 2000 & 0.2390 & 0.2115 & 0.2685 & 1 \\
+qwen3.5-0.8b & mmlu & all_attention_off & 0.4890 & 0.2145 & 0.2745 & 2000 & 0.2745 & 0.2475 & 0.3045 & 1 \\
+qwen3.5-0.8b & gsm8k & all_linear_off & 0.3500 & 0.0000 & 0.3500 & 100 & 0.3500 & 0.2500 & 0.4500 & 1 \\
+qwen3.5-0.8b & gsm8k & all_attention_off & 0.3500 & 0.0000 & 0.3500 & 100 & 0.3500 & 0.2500 & 0.4500 & 1 \\
+qwen3.5-0.8b & arc_challenge & all_linear_off & 0.7425 & 0.2609 & 0.4816 & 299 & 0.4816 & 0.4147 & 0.5518 & 1 \\
+qwen3.5-0.8b & arc_challenge & all_attention_off & 0.7425 & 0.2274 & 0.5151 & 299 & 0.5151 & 0.4415 & 0.5853 & 1 \\
+qwen3.5-0.8b & hellaswag & all_linear_off & 0.5160 & 0.2680 & 0.2480 & 1981 & 0.2463 & 0.2160 & 0.2756 & 1 \\
+qwen3.5-0.8b & hellaswag & all_attention_off & 0.5160 & 0.3405 & 0.1755 & 1981 & 0.1767 & 0.1524 & 0.2024 & 1 \\
+qwen3.5-0.8b & truthfulqa_mc & all_linear_off & 0.2848 & 0.2304 & 0.0544 & 790 & 0.0544 & 0.0101 & 0.0975 & 1 \\
+qwen3.5-0.8b & truthfulqa_mc & all_attention_off & 0.2848 & 0.2671 & 0.0177 & 790 & 0.0177 & -0.0203 & 0.0519 & 0 \\
+falcon-h1-0.5b & mmlu & all_ssm_off & 0.5680 & 0.2235 & 0.3445 & 2000 & 0.3445 & 0.3170 & 0.3750 & 1 \\
+falcon-h1-0.5b & mmlu & all_attention_off & 0.5680 & 0.2280 & 0.3400 & 2000 & 0.3400 & 0.3130 & 0.3710 & 1 \\
+falcon-h1-0.5b & gsm8k & all_ssm_off & 0.4000 & 0.0300 & 0.3700 & 100 & 0.3700 & 0.2700 & 0.4800 & 1 \\
+falcon-h1-0.5b & gsm8k & all_attention_off & 0.4000 & 0.0000 & 0.4000 & 50 & 0.3400 & 0.2200 & 0.4800 & 1 \\
+falcon-h1-0.5b & arc_challenge & all_ssm_off & 0.7358 & 0.2107 & 0.5251 & 299 & 0.5251 & 0.4548 & 0.5887 & 1 \\
+falcon-h1-0.5b & arc_challenge & all_attention_off & 0.7358 & 0.2140 & 0.5217 & 299 & 0.5217 & 0.4515 & 0.5886 & 1 \\
+falcon-h1-0.5b & hellaswag & all_ssm_off & 0.5120 & 0.2650 & 0.2470 & 1981 & 0.2479 & 0.2221 & 0.2746 & 1 \\
+falcon-h1-0.5b & hellaswag & all_attention_off & 0.5120 & 0.3690 & 0.1430 & 1981 & 0.1413 & 0.1227 & 0.1615 & 1 \\
+falcon-h1-0.5b & truthfulqa_mc & all_ssm_off & 0.2228 & 0.2633 & -0.0405 & 790 & -0.0405 & -0.0772 & -0.0038 & 0 \\
+falcon-h1-0.5b & truthfulqa_mc & all_attention_off & 0.2228 & 0.2266 & -0.0038 & 790 & -0.0038 & -0.0329 & 0.0291 & 0 \\
+\bottomrule
+\end{tabular}
