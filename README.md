@@ -1,15 +1,34 @@
-# Functional Component Ablation in Hybrid Language Models
+# Component Ablation for Efficient Hybrid Language Model Architectures: Performance, Resilience, and Compression Implications
 
-> **Paper**: *Functional Component Ablation Reveals Specialization Patterns in Hybrid Language Model Architectures*
-> 
-> Hector Borobia, Elies Seguí-Mas, Guillermina Tormo-Carbó — Universitat Politècnica de València
+This repository contains the code, result tables, and figure-generation materials for the manuscript:
+
+**Component Ablation for Efficient Hybrid Language Model Architectures: Performance, Resilience, and Compression Implications**
+
+Hector Borobia, Elies Seguí-Mas, Guillermina Tormo-Carbó — Universitat Politècnica de València
+
+A preprint version is available on arXiv:
+
+**arXiv:2603.22473**
+
+Earlier versions of this work circulated under the title:
+
+**Functional Component Ablation Reveals Specialization Patterns in Hybrid Language Model Architectures**
+
+The repository supports reproducibility for the final journal-submission version, including processed result tables, figure-generation scripts, benchmark outputs, and the figures used in the manuscript.
 
 ## Key Findings
 
-1. **Neither component is bypassed** — Both attention and alternative components (SSM/linear attention) are essential in natively trained hybrid models
-2. **The alternative component is the backbone** — Removing linear attention (Qwen) causes 35,200× perplexity degradation vs. 82× for attention; removing SSM (Falcon) causes 53× vs. 3.2×
-3. **Positional importance gradient** — Early layers are 2–5× more critical than late layers for both component types
-4. **Hybrid resilience** — Hybrid models are 20–119× more resilient to random layer removal than pure Transformers of comparable size
+1. **Both component types contribute to performance**  
+   Removing either attention or the alternative sequence-processing pathway degrades downstream benchmark performance in the tested hybrid language models.
+
+2. **Likelihood is more sensitive to the linear/SSM pathway**  
+   WikiText-2 perplexity increases more strongly when removing the linear-attention pathway in Qwen3.5-0.8B or the SSM pathway in Falcon-H1-0.5B than when removing attention in the corresponding model.
+
+3. **Ablation impact is position-dependent**  
+   The strongest single-component effects are concentrated in early or mid-network components, while late components generally produce smaller degradation.
+
+4. **Hybrid and Transformer controls degrade differently under random removal**  
+   Matched random controls show different normalized perplexity degradation patterns between the hybrid model and the same-family Transformer baseline.
 
 ## Models Studied
 
@@ -34,12 +53,14 @@
 │   ├── *_experiment2_metrics.csv          # Hidden-state metrics per model
 │   ├── *_architecture_summary.csv         # Architecture details per model
 │   └── ...
-├── figures/                               # All generated figures (PNG + PDF)
+├── figures/                               # All generated figures
 │   ├── paper_radar_group_ablation.png
-│   ├── paper_dual_layer_sweep_heatmap.png
-│   ├── paper_component_dominance_by_layer.png
-│   ├── paper_exp1_exp2_correlation.png
 │   ├── perplexity_under_ablation_bar.png
+│   ├── paper_random_control_significance.png
+│   ├── paper_component_dominance_by_layer.png
+│   ├── paper_dual_layer_sweep_heatmap.png
+│   ├── paper_exp1_exp2_correlation.png
+│   ├── experiment3_score_drop_heatmap.png
 │   └── ...
 ├── tables/                                # LaTeX tables (.tex)
 │   ├── paper_table1_group_ablation_delta.tex
@@ -68,8 +89,6 @@ All results are checkpointed to disk. Sessions can be interrupted and resumed at
 
 ### Execution Time
 
-### Execution Time
-
 | Section | Description | Time (L4 GPU) |
 |---------|------------|---------------|
 | 0–2 | Setup + architecture + ablation mechanism | ~15 min (includes model downloads) |
@@ -86,18 +105,28 @@ All results are checkpointed to disk. Sessions can be interrupted and resumed at
 
 - **Sequential skip (Qwen)**: Layer output replaced with input (identity within residual stream)
 - **Parallel zeroing (Falcon)**: Targeted component output zeroed via forward hooks
-- **Random controls**: Same number of randomly selected layers removed (5 trials, bootstrap CIs)
+- **Random controls**: Same number of randomly selected layers/components removed; random trials are reported with standard deviations where applicable
 - **Transformer baseline**: Random layer removal on Qwen2.5-0.5B for cross-architecture comparison
+
+## Data and Code Availability
+
+Code, processed result tables, figure-generation scripts, and reproducibility materials are publicly available in this repository:
+
+https://github.com/hecboar/hybrid-component-ablation
+
+The repository includes the evaluation outputs used to generate the paper tables and figures. Pretrained model weights and benchmark datasets are not redistributed; they should be accessed from their original providers under their respective licenses. Large intermediate artifacts and additional execution logs are available from the corresponding author upon reasonable request.
 
 ## Citation
 
 ```bibtex
-@article{borobia2026hybrid,
-  title={Functional Component Ablation Reveals Specialization Patterns 
-         in Hybrid Language Model Architectures},
+@misc{borobia2026componentablation,
+  title={Component Ablation for Efficient Hybrid Language Model Architectures: Performance, Resilience, and Compression Implications},
   author={Borobia, Hector and Segu{\'i}-Mas, Elies and Tormo-Carb{\'o}, Guillermina},
-  journal={arXiv preprint},
-  year={2026}
+  year={2026},
+  eprint={2603.22473},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG},
+  url={https://arxiv.org/abs/2603.22473}
 }
 ```
 
